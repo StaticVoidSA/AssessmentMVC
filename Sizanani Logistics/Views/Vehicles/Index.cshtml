@@ -1,0 +1,40 @@
+﻿@* Views/Contractors/Index.cshtml *@
+
+@model List<Sizanani_Logistics.Models.Vehicle>
+
+<h3>Contractors</h3>
+
+<table class="table">
+    <thead>
+        <th>Type</th>
+        <th>Registration</th>
+        <th>Model</th>
+        <th>Weight (Tons)</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Type</td>
+                <td>@item.Registration</td>
+                <td>@item.Model</td>
+                <td>@item.Weight</td>
+                <td><a asp-controller="Vehicles" asp-action="Edit" asp-route-vehicleId="@item.VehicleId">Edit</a></td>
+                <td><a asp-controller="Vehicles" asp-action="Delete" asp-route-vehicleId="@item.VehicleId">Delete</a></td>
+            </tr>            
+        }
+
+        @if (Model.Count == 0)
+        {
+            <tr>
+                <td colspan="3">No vehicles to display</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="container mt-3">
+    <a asp-controller="Vehicles" asp-action="RegisterVehicle" class="btn btn-primary mt-3">Register Vehicle</a>
+</div>

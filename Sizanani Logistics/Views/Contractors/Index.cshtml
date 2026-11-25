@@ -1,0 +1,31 @@
+﻿@* Views/Contractors/Index.cshtml *@
+
+@model IEnumerable<Sizanani_Logistics.Models.Contractor>
+
+<h3>Contractors</h3>
+
+<table class="table">
+    <thead>
+        <th>Contactor Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th></th>
+        <th></th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContractorName</td>
+                <td>@item.Email</td>
+                <td>@item.PhoneNumber</td>
+                <td><a asp-controller="Contractors" asp-action="Edit" asp-route-contractorId="@item.ContractorId">Edit</a></td>
+                <td><a asp-controller="Contractors" asp-action="Delete" asp-route-contractorId="@item.ContractorId">Delete</a></td>
+            </tr>            
+        }
+    </tbody>
+</table>
+
+<div class="container mt-3">
+    <a asp-controller="Contractors" asp-action="RegisterContractor" class="btn btn-primary mt-3">Register Contractor</a>
+</div>

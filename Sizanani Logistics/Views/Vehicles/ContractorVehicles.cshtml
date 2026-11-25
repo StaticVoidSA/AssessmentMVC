@@ -1,0 +1,39 @@
+﻿@model List<Sizanani_Logistics.Models.Vehicle>
+
+<h5>Contractor Vehicles</h5>
+
+<form asp-controller="Vehicles" asp-action="ContractorVehicles" method="get">
+    <select name="contractorId" asp-items="ViewBag.contractors" class="form-control" onchange="this.form.submit()">
+        <option value="">-- Select a Contractor --</option>
+    </select>
+    
+    <!--Populate table with vehicles based off contractor selection-->
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Registration</th>
+                <th>Model</th>
+                <th>Weight (Tons)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var v in Model)
+            {
+                <tr>
+                    <td>@v.Type</td>
+                    <td>@v.Registration</td>
+                    <td>@v.Model</td>
+                    <td>@v.Weight</td>
+                </tr>
+            }
+
+                @if(Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan ="3">No vehicles to display</td>
+                    </tr>      
+                }
+            </tbody>
+    </table>
+</form>

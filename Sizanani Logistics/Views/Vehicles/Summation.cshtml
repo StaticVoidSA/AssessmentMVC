@@ -1,0 +1,30 @@
+﻿@model List<Sizanani_Logistics.Models.ContractorSummation>
+
+<h5>Contractor Summation</h5>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Contractor</th>
+            <th>No of Vehicles</th>
+            <th>Total Tons</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContractorName</td>
+                <td>@item.VehicleCount</td>
+                <td>@item.TotalTons</td>
+            </tr>
+        }
+
+        @if (Model == null || Model.Count == 0)
+        {
+            <tr>
+                <td colspan="3">No data to display.</td>
+            </tr>
+        }
+    </tbody>
+</table>
